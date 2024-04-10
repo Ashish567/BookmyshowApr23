@@ -1,9 +1,6 @@
 package com.lld.bookmyshowapr23.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +15,7 @@ public class Booking extends BaseModel{
     // M  : 1
     @ManyToOne
     private User user;
+    @Enumerated(EnumType.ORDINAL)
     private BookingStatus bookingStatus;
     private Date bookedAt;
     // 1 : M
@@ -39,3 +37,13 @@ public class Booking extends BaseModel{
 // HW : go to every class and decide the mapping for each relation
 // ORM : Object relation Mapping
 // Hibernate
+
+// booking booking_status
+// HW : Hibernate produces new tables for One to Many relationships
+// Figure out how to avoid this
+
+// Payment
+// booking_id : NULL
+
+// @OnetoOne
+// @OnetoMany
