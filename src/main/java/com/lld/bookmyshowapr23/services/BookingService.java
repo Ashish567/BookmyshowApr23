@@ -1,6 +1,7 @@
 package com.lld.bookmyshowapr23.services;
 
 import com.lld.bookmyshowapr23.models.*;
+import com.lld.bookmyshowapr23.repositories.BookingRepository;
 import com.lld.bookmyshowapr23.repositories.ShowRepository;
 import com.lld.bookmyshowapr23.repositories.ShowSeatRepository;
 import com.lld.bookmyshowapr23.repositories.UserRepository;
@@ -19,16 +20,19 @@ public class BookingService {
     private UserRepository userRepository;
     private ShowRepository showRepository;
     private ShowSeatRepository showSeatRepository;
+    private BookingRepository bookingRepository;
 
     @Autowired
     BookingService(
             UserRepository userRepository,
             ShowRepository showRepository,
-            ShowSeatRepository showSeatRepository
+            ShowSeatRepository showSeatRepository,
+            BookingRepository bookingRepository
     ){
         this.userRepository = userRepository;
         this.showRepository = showRepository;
         this.showSeatRepository = showSeatRepository;
+        this.bookingRepository = bookingRepository;
 
     }
 
@@ -80,8 +84,19 @@ public class BookingService {
         booking.setBookedAt(new Date());
         booking.setAmount(100);
         booking.setPayments(new ArrayList<>());
+        bookingRepository.save(booking);
         // 9. return the booking object
+        // Break till 10:25 pm
 
         return booking;
     }
 }
+
+
+// PriceCalculatorService
+    // calculatePrice
+// Show Seats
+// for all the show seats
+
+// 1. find showSeatType using the show
+// 2. for all the showSeat you will check the type and price
