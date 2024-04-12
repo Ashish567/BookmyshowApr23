@@ -1,6 +1,9 @@
 package com.lld.bookmyshowapr23.models;
 
-public enum BookingStatus {
+import jakarta.persistence.Entity;
+
+public enum BookingStatus{
     CONFIRMED,
-    CANCELLED
+    CANCELLED,
+    PENDING
 }
